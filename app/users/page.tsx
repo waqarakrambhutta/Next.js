@@ -1,7 +1,6 @@
 import React from "react";
 
 interface User {
-  map(arg0: (user: any) => any): React.ReactNode;
   id: number;
   name: string;
 }
@@ -9,14 +8,14 @@ interface User {
 const UsersPage = async () => {
   const res = await fetch(
     "https://jsonplaceholder.typicode.com/users",
-    // {cache:'no-store'}, //to disable caching, if our data is changing frequently.
-    { next: { revalidate: 10 } } //this say our data will be updated after 10 seconds.
+    { cache: 'no-store'}
   );
   const users: User[] = await res.json();
 
   return (
     <>
       <h1>Users</h1>
+      <p>{new Date().toLocaleTimeString()}</p>
       <ul>
         {users.map((user) => (
           <li key={user.id}>{user.name}</li>
