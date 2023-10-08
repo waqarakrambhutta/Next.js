@@ -1,23 +1,29 @@
-import React from 'react'
+import React from "react";
 
-interface User{
+interface User {
   map(arg0: (user: any) => any): React.ReactNode;
-  id: number,
-  name: string
+  id: number;
+  name: string;
 }
 
 const UsersPage = async () => {
-  const res = await fetch('https://jsonplaceholder.typicode.com/users');
-  const users : User[]= await res.json();
+  const res = await fetch(
+    "https://jsonplaceholder.typicode.com/users",
+    // {cache:'no-store'}, //to disable caching, if our data is changing frequently.
+    { next: { revalidate: 10 } } //this say our data will be updated after 10 seconds.
+  );
+  const users: User[] = await res.json();
 
   return (
     <>
-    <h1>Users</h1>
-    <ul>
-      {users.map(user=> <li key={user.id}>{user.name}</li>)}
-    </ul>
+      <h1>Users</h1>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
     </>
-  )
-}
+  );
+};
 
-export default UsersPage
+export default UsersPage;
