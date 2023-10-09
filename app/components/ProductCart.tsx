@@ -1,10 +1,11 @@
 import React from "react";
 import AddtoCart from "./AddtoCart";
+import styles from './ProductCart.module.css'
 
 const ProductCart = () => {
   return (
-    <div>
-      <AddtoCart></AddtoCart>
+    <div className={styles.card}>
+      <AddtoCart/>
     </div>
   );
 };
