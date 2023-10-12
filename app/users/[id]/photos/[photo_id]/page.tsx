@@ -10,4 +10,6 @@ const UserPhoto = ({params:{id,photo_id}}:Props) => {
   )
 }
 
+
+
 export default UserPhoto
