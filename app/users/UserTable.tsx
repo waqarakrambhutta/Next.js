@@ -1,3 +1,4 @@
+import { sort } from "fast-sort";
 import React from "react";
 
 interface User {
@@ -9,7 +10,8 @@ interface User {
 const UserTable = async () => {
   const res = await fetch("https://jsonplaceholder.typicode.com/users");
   const users: User[] = await res.json();
-
+  
+  
   return (
     <>
       <table className="table">
