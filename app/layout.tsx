@@ -2,7 +2,6 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navbar from "./Navbar";
-import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,10 +19,9 @@ export default function RootLayout({
     <html lang="en" data-theme="cupcake">
       <body className={inter.className}>
         <Navbar />
-        <main className="p-5">
-          <Suspense fallback={<p>Loading...</p>}>{children}</Suspense>
-        </main>
+        <main className="p-5">{children}</main>
       </body>
     </html>
   );
 }
+
